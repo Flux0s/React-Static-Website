@@ -22,9 +22,9 @@ const styles = (theme) => ({
     height: "100%",
     background:
       "linear-gradient(315deg, " +
-      theme.palette.secondary.main +
-      " 5%, " +
-      theme.palette.primary.dark +
+      theme.palette.secondary.dark +
+      " 10%, " +
+      theme.palette.primary.light +
       " 100%) "
   },
   welcomePaper: {
@@ -54,7 +54,10 @@ class App extends Component {
       //<img src={logo} className="App-logo" alt="logo" />
       <CssBaseline>
         <MuiThemeProvider theme={this.state.theme}>
-          <Page classes={this.props.classes} LightUpdate={this.LightUpdate} />
+          <Page
+            classes={{ ...this.props.classes, theme: this.state.theme }}
+            LightUpdate={this.LightUpdate}
+          />
         </MuiThemeProvider>
       </CssBaseline>
     );

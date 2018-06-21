@@ -11,13 +11,15 @@ import {
   Button
 } from "@material-ui/core";
 
-import ProLogo from "./img/PrometricLogo.png";
+import ProLogoDark from "./img/PrometricLogoDark.png";
+import ProLogoLight from "./img/PrometricLogoLight.png";
 
 class splashPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      info: { pageTitle: "" }
+      info: { pageTitle: "" },
+      lightTheme: this.props.classes.theme.palette.type === "light"
     };
     this.props.LoadPageInfo(this.state.info);
   }
@@ -29,19 +31,29 @@ class splashPage extends Component {
         justify="center"
         alignItems="center"
       >
-        <Grid item xl="3" lg="4" md="5" sm="6" xs="7" zeroMinWidth>
+        <Grid item xl="3" lg="4" md="5" sm="6" xs="10" zeroMinWidth>
           <Paper className={this.props.classes.welcomePaper}>
-            <Grid item xs="12" background="radial-gradient(black, white)">
-              <img src={ProLogo} width="100%" />
+            <Grid item xs="12">
+              <img
+                src={ProLogoLight}
+                width="100%"
+                hidden={!(this.props.classes.theme.palette.type === "light")}
+              />
+
+              <img
+                src={ProLogoDark}
+                width="104%"
+                hidden={this.props.classes.theme.palette.type === "light"}
+              />
             </Grid>
             <Divider />
             <br />
             <Grid item xs="12">
               <TextField
                 className={this.props.classes.userTextBox}
-                width="300"
-                autoFocus={true}
-                required={true}
+                autoFocus
+                fullwidth
+                required
                 label="Username"
                 id="username"
               />
@@ -49,9 +61,8 @@ class splashPage extends Component {
             <Grid item xs="12">
               <TextField
                 className={this.props.classes.userTextBox}
-                width="300"
-                autoFocus={false}
-                required={true}
+                required
+                fullwidth
                 label="Password"
                 id="password"
                 type="password"
