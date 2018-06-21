@@ -24,21 +24,20 @@ const styles = (theme) => ({
       "linear-gradient(315deg, " +
       theme.palette.secondary.main +
       " 5%, " +
-      theme.palette.primary.light +
-      " 50%)"
+      theme.palette.primary.dark +
+      " 100%) "
   },
   welcomePaper: {
     textAlign: "center",
     padding: theme.spacing.unit * 4
   },
-  prLogo: {
-    height: 0,
-    paddingTop: "56.25%"
-  },
   userTextBox: {
     marginLeft: theme.spacing.unit,
     marginRight: theme.spacing.unit,
     marginup: theme.spacing.unit
+  },
+  button: {
+    margin: theme.spacing.unit
   }
 });
 
